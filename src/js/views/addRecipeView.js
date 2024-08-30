@@ -35,8 +35,6 @@ class AddRecipeView extends View {
             const dataArr = [...new FormData(this._parentElement)];
             const data = Object.fromEntries(dataArr)
             controlAddRecipe(data);
-
-
         })
     }
 

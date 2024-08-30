@@ -15,8 +15,6 @@ if (module.hot) {
 
 // https://forkify-api.herokuapp.com/v2
 
-// /5ed6604591c37cdc054bc886?
-
 ///////////////////////////////////////
 
 const controlRecipes = async function () {
@@ -25,7 +23,6 @@ const controlRecipes = async function () {
   try {
     const id = window.location.hash.slice(1)
     // const id = window.location.pathname.slice(1)
-
 
     if (!id) return;
 
@@ -50,7 +47,6 @@ const controlRecipes = async function () {
 const controlSearchResults = async function () {
   try {
     const query = searchView.getQuery();
-    console.log(query)
     if (!query) return;
 
     //loading spinner
@@ -101,7 +97,6 @@ const controlBookmarks = function () {
 }
 
 const controlAddRecipe = async function (newRecipe) {
-
   try {
     await model.uploadRecipe(newRecipe);
 
@@ -124,9 +119,6 @@ const controlAddRecipe = async function (newRecipe) {
 }
 
 const init = function () {
-  // model.init()
-  // localStorage.clear('bookmarks')
-
   bookmarksView.addHandlerRender(controlBookmarks)
   recipeView.addHandlerRender(controlRecipes)
   recipeView.addHandlerUpdateServings(controlServings)
@@ -134,7 +126,6 @@ const init = function () {
   searchView.addHandlerRender(controlSearchResults)
   paginationView.addHandlerclick(controlPagination)
   addRecipeView.addHandlerUpload(controlAddRecipe)
-
 }
 
 init()

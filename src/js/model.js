@@ -30,30 +30,23 @@ const createRecipeObject = function (data) {
 }
 
 export const loadRecipe = async function (id) {
-
     try {
         const data = await getJSON(`${CONFIG.API_URL}${id}?key=${CONFIG.API_KEY}`);
         state.recipe = createRecipeObject(data)
-
 
         if (state.bookmarks.some((bookrec) => state.recipe.id === bookrec.id))
             state.recipe.bookmarked = true;
         else
             state.recipe.bookmarked = false;
 
-        // console.log(recipe)
-
     } catch (err) {
-        // throw err;
         console.log(err)
     }
 };
 
 export const loadSearchResults = async function (query) {
-
     try {
         state.search.query = query;
-        console.log(`${CONFIG.API_URL}/?search=${query}?key=${CONFIG.API_KEY}`)
         const data = await getJSON(`${CONFIG.API_URL}?search=${query}&key=${CONFIG.API_KEY}`);
         const { recipes } = data?.data;
 
@@ -73,7 +66,6 @@ export const loadSearchResults = async function (query) {
         console.log('Error')
         throw error;
     }
-
 }
 
 export const getSearchResultPage = function (page = state.search.page) {
@@ -83,7 +75,6 @@ export const getSearchResultPage = function (page = state.search.page) {
     const end = (page * state.search.resultsPerPage);
 
     return state.search.results.slice(start, end);
-
 }
 
 export const updateServings = function (newServings) {
@@ -102,6 +93,7 @@ export const addBookmark = function (recipe = state.recipe) {
     }
     persistBookmarks()
 }
+
 export const deleteBookmark = function (id) {
     const index = state.bookmarks.findIndex(bookrec => bookrec.id === id)
     state.bookmarks.splice(index, 1)
@@ -123,13 +115,10 @@ const clearBookmarks = function () {
 const init = function () {
     const storage = localStorage.getItem('bookmarks');
     if (storage) state.bookmarks = JSON.parse(storage)
-
 }
 
 export const uploadRecipe = async function (newRecipe) {
-
     try {
-        // console.log(newRecipe);
 
         const ingredients = []
 

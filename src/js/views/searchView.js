@@ -1,6 +1,5 @@
 class SearchView {
     _parentElement = document.querySelector('.search')
-    // _searchBtnEl = document.querySelector('.search__btn')
 
     getQuery() {
         return this._parentElement.querySelector('.search__field').value;
@@ -16,7 +15,6 @@ class SearchView {
             controlSearchResults();
         });
     }
-
 
 }
 export default new SearchView()

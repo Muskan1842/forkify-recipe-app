@@ -17,14 +17,12 @@ export const getJSON = async function (url) {
 
         return data;
     } catch (error) {
-        console.log('hiiiiiiiii')
         throw error;
     }
 }
 
 export const sendJSON = async function (url, uploadData) {
     try {
-
         const fetchPro = fetch(url, {
             method: 'POST',
             headers: {
@@ -39,7 +37,6 @@ export const sendJSON = async function (url, uploadData) {
 
         return data;
     } catch (error) {
-        console.log('hiiiiiiiii')
         throw error;
     }
 }
